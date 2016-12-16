@@ -13,6 +13,8 @@ You do not have to use the exact instances of those pages that are linked above 
 When reviewing the website you should pay attention to the following elements that indicate how the page was designed:
 * **Structure**
   * What parts of the page are nested within other parts?
+   board-wrapper > board > .js-card-stickers & .js-card-details > .card-detail-window > .card-detail-badge > button links and comments, etc.
+  
   * What parts of the page are placed before or after other parts?
   * What parts of the page form the main content?
   * Are there sidebars and/or menus?
@@ -29,13 +31,29 @@ The answers to each of these questions should help inform your design of a Backb
 Once you've completed your review of the page, take some time to consider what Backbone Views, Models, and Collections you would need to create in order to build that page. You should write up an outline document with the following information:
 * Views
   * List each View and what part(s) of the page it controls
-  * Explain the Views' hierarchial structure by showing which Views are nested in which other Views
+    Application - controls things like searches, menus, and adding cards
+    Card List View - controls the main view of the page and handles organization of the cards
+    Card View - controls detail modals on individual cards
+
+  * Explain the Views' hierarchial structure by showing which Views are nested in which other Views
+    Card List View is in Application  
+    Card List is in Card List View
+  
 * Models
   * List each Model and what data attributes it has
+    Card - parent card, details for cards, comments
+    
   * List which View(s) are associated with which Models
 * Collections
   * List each Collection and what Model it uses
+    Card List would use the Card model and display parent boards and potentially parent lists for card stacking
+    
   * List which View(s) are associated with which Collections
 * Events
   * List the DOM events that are handled by each View
+    Application would handle the click event for submitting a search
+    Card would listen for a click event so it could show the details modal
+    
   * List any custom events that view might trigger
+  
+  Card would listen for a click on an image in card details to enlarge it?
